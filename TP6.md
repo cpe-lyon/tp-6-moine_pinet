@@ -53,9 +53,14 @@ Commandes :
 * */dev/sdb2 / ntfs defaults 0 0*
 
 7.	Utilisez la commande mount puis redémarrez votre VM pour valider la configuration
+
+* *sudo mount-a*
+* *sudo poweroff*
+
 8.	Montez votre clé USB dans la VM
 
-??
+* *sudo mkdir /media/USB*
+* *sudo mount -t vfat /dev/sdb1/media/USB -o*
 
 9.	Créez un dossier partagé entre votre VM et votre système hôte (rem. il peut être nécessaire d’installer les Additions invité de VirtualBox
 
@@ -190,11 +195,11 @@ Commandes :
 
 * *crontab -l* => voir la crontab
 * *crontab -e* => modifie crontab
-* * */3 * * * * echo "BB Yoda meeting" >> ~/yoyo* => toutes les 3 minutes écrit BB Yoda meeting dans yoyo (echo seul s'éxécute dans un shell different de celui afficher donc impossible à voir)
+* */3 * * * * echo "BB Yoda meeting" >> ~/yoyo => toutes les 3 minutes écrit BB Yoda meeting dans yoyo (echo seul s'éxécute dans un shell différent de celui afficher donc impossible à voir)
 
 **EXTRAIT OPENCLASSROOM** :
 
-# m h  dom mon dow   command
+*m h  dom mon dow   command*
 
 Comme cette ligne est précédée d'un #, il s'agit d'un commentaire (qui sera donc ignoré).
 Cette ligne vous donne quelques indications sur la syntaxe du fichier :
@@ -216,16 +221,29 @@ Cette ligne vous donne quelques indications sur la syntaxe du fichier :
 
 2.	Est-ce que le message s’est affiché? Si la réponse est non, essayez de trouver la cause du problème (par exemple en vous aidant des logs, du manuel...)
 
+(Voir réponse ci-dessus)
+
 3.	Pour tester le fonctionnement de cron, commencez par programmer l’exécution d’une tâche simple, l’affichage de “Il faut réviser pour l’examen!”, toutes les 3 minutes.
 
 4.	Programmez l’exécution d’une commande tous les jours, toute l’année, tous les quarts d’heure
 
+*/15 * * * * echo "BB Yoda meeting" >> ~/yoyo
+
 5.	Programmez l’exécution d’une commande toutes les cinq minutes à partir de 2 (2, 7, 12, etc.) à 18 heures les 1er et 15 du mois :
+
+*/5 02-18 1,15 * * echo "BB Yoda meeting" >> ~/yoyo
 
 6.	Programmez l’exécution d’une commande du lundi au vendredi à 17 heures
 
+\* 17 * * 1-5 echo "BB Yoda meeting" >> ~/yoyo
+
+
 7.	Modifiez votre crontab pour que les messages ne soient plus envoyés par mail, mais redirigés dans un fichier de log situé dans votre dossier personnel
 
+\* 17 * * 1-5 echo "BB Yoda meeting" >> ~/mon_cron.log
+
 8.	Videz votre crontab
+
+*crontab -r*
 
 
