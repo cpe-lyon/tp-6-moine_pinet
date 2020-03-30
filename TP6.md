@@ -182,5 +182,50 @@ Commandes :
 
 ??
 
+## Exercice 4. Exécution de commandes en différé : at et cron
+
+1.	Programmez une tâche qui affiche un rappel pour la réunion qui aura lieu dans 3 minutes. Vérifiez entre temps que la tâche est bien programmée.
+
+Commandes : 
+
+* *crontab -l* => voir la crontab
+* *crontab -e* => modifie crontab
+* * */3 * * * * echo "BB Yoda meeting" >> ~/yoyo* => toutes les 3 minutes écrit BB Yoda meeting dans yoyo (echo seul s'éxécute dans un shell different de celui afficher donc impossible à voir)
+
+**EXTRAIT OPENCLASSROOM** :
+
+# m h  dom mon dow   command
+
+Comme cette ligne est précédée d'un #, il s'agit d'un commentaire (qui sera donc ignoré).
+Cette ligne vous donne quelques indications sur la syntaxe du fichier :
+
+    m : minutes (0 - 59) ;
+
+    h : heures (0 - 23) ;
+
+    dom (day of month) : jour du mois (1 - 31) ;
+
+    mon (month) : mois (1 - 12) ;
+
+    dow (day of week) : jour de la semaine (0 - 6, 0 étant le dimanche) ;
+
+    command : c'est la commande à exécuter.
+
+++ pour faire toutes les 3 minutes on note */3 dans le champ m
+
+
+2.	Est-ce que le message s’est affiché? Si la réponse est non, essayez de trouver la cause du problème (par exemple en vous aidant des logs, du manuel...)
+
+3.	Pour tester le fonctionnement de cron, commencez par programmer l’exécution d’une tâche simple, l’affichage de “Il faut réviser pour l’examen!”, toutes les 3 minutes.
+
+4.	Programmez l’exécution d’une commande tous les jours, toute l’année, tous les quarts d’heure
+
+5.	Programmez l’exécution d’une commande toutes les cinq minutes à partir de 2 (2, 7, 12, etc.) à 18 heures les 1er et 15 du mois :
+
+6.	Programmez l’exécution d’une commande du lundi au vendredi à 17 heures
+
+7.	Modifiez votre crontab pour que les messages ne soient plus envoyés par mail, mais redirigés dans un fichier de log situé dans votre dossier personnel
+
+8.	Videz votre crontab
 
 
